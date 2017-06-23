@@ -9,17 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var authenticationService: AuthenticationService = AuthenticationServiceImplementation()
+    var login = "Login"
+    var password = "Password"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let isAuthenticated = authenticationService.authenticate(with: login, and: password)
+        isAuthenticated ? print("Добро пожаловать") : print("В доступе отказано")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

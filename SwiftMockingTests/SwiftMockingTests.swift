@@ -11,26 +11,29 @@ import XCTest
 
 class SwiftMockingTests: XCTestCase {
     
+    var viewController: ViewController!
+    var authenticationService: AuthenticationServiceMock!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        authenticationService = AuthenticationServiceMock()
+        viewController = ViewController()
+        viewController.authenticationService = authenticationService!
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testViewDidLoad() {
+        // given
+        viewController.login = "Test login"
+        viewController.password = "Test password"
+        authenticationService.authenticateReturnValue = true
+        
+        // when
+        viewController.viewDidLoad()
+        
+        // then
+        XCTAssert(authenticationService.authenticateCalled)
+        XCTAssert(authenticationService.authenticateReceivedArguments?.login == viewController.login)
+        XCTAssert(authenticationService.authenticateReceivedArguments?.password == viewController.password)
     }
     
 }
