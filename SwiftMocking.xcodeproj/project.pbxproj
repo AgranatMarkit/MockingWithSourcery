@@ -18,7 +18,7 @@
 		4D1D645D1EFDAD2E00A640A0 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1D645C1EFDAD2E00A640A0 /* AuthenticationService.swift */; };
 		4D1D645F1EFDAD5300A640A0 /* AutoMockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1D645E1EFDAD5300A640A0 /* AutoMockable.swift */; };
 		4D5683F81EFDB1C000FA621A /* AuthenticationServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5683F71EFDB1C000FA621A /* AuthenticationServiceImplementation.swift */; };
-		4D5683FA1EFDB62F00FA621A /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5683F91EFDB62F00FA621A /* AutoMockable.generated.swift */; };
+		4D5683FD1EFEE93400FA621A /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5683FC1EFEE93400FA621A /* AutoMockable.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,7 @@
 		4D1D645C1EFDAD2E00A640A0 /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		4D1D645E1EFDAD5300A640A0 /* AutoMockable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.swift; sourceTree = "<group>"; };
 		4D5683F71EFDB1C000FA621A /* AuthenticationServiceImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceImplementation.swift; sourceTree = "<group>"; };
-		4D5683F91EFDB62F00FA621A /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = SOURCE_ROOT; };
+		4D5683FC1EFEE93400FA621A /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		522ED4020F3A423F43E71018 /* Pods-SwiftMocking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMocking.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMocking/Pods-SwiftMocking.release.xcconfig"; sourceTree = "<group>"; };
 		7FDC35FA82D7257C6BFD97E6 /* Pods-SwiftMockingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMockingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMockingTests/Pods-SwiftMockingTests.release.xcconfig"; sourceTree = "<group>"; };
 		92EEAFA2BA3F464EE4F5EE30 /* Pods-SwiftMocking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMocking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMocking/Pods-SwiftMocking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,8 +97,7 @@
 		4D1D643A1EFDACE100A640A0 /* SwiftMocking */ = {
 			isa = PBXGroup;
 			children = (
-				4D5683F91EFDB62F00FA621A /* AutoMockable.generated.swift */,
-				4D1D645E1EFDAD5300A640A0 /* AutoMockable.swift */,
+				4D5683FB1EFE534600FA621A /* AutoMockable */,
 				4D5683F61EFDB12A00FA621A /* AuthenticationService */,
 				4D1D643B1EFDACE100A640A0 /* AppDelegate.swift */,
 				4D1D643D1EFDACE100A640A0 /* ViewController.swift */,
@@ -126,6 +125,15 @@
 				4D5683F71EFDB1C000FA621A /* AuthenticationServiceImplementation.swift */,
 			);
 			name = AuthenticationService;
+			sourceTree = "<group>";
+		};
+		4D5683FB1EFE534600FA621A /* AutoMockable */ = {
+			isa = PBXGroup;
+			children = (
+				4D5683FC1EFEE93400FA621A /* AutoMockable.generated.swift */,
+				4D1D645E1EFDAD5300A640A0 /* AutoMockable.swift */,
+			);
+			name = AutoMockable;
 			sourceTree = "<group>";
 		};
 		81E1A0D91726F85F6F4675A9 /* Pods */ = {
@@ -311,7 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/Sourcery/bin/sourcery --sources . --templates ./Pods/Sourcery/Templates/AutoMockable.stencil --output .";
+			shellScript = "$PODS_ROOT/Sourcery/bin/sourcery --sources . --templates ./Pods/Sourcery/Templates/AutoMockable.stencil --output ./SwiftMocking";
 		};
 		8B8873B8F3163C792C1655C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -366,11 +374,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1D645F1EFDAD5300A640A0 /* AutoMockable.swift in Sources */,
+				4D5683FD1EFEE93400FA621A /* AutoMockable.generated.swift in Sources */,
 				4D1D645D1EFDAD2E00A640A0 /* AuthenticationService.swift in Sources */,
 				4D1D643E1EFDACE100A640A0 /* ViewController.swift in Sources */,
 				4D1D643C1EFDACE100A640A0 /* AppDelegate.swift in Sources */,
 				4D5683F81EFDB1C000FA621A /* AuthenticationServiceImplementation.swift in Sources */,
-				4D5683FA1EFDB62F00FA621A /* AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

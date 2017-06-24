@@ -18,22 +18,38 @@ class SwiftMockingTests: XCTestCase {
         super.setUp()
         authenticationService = AuthenticationServiceMock()
         viewController = ViewController()
-        viewController.authenticationService = authenticationService!
-    }
-    
-    func testViewDidLoad() {
-        // given
+        viewController.authenticationService = authenticationService
         viewController.login = "Test login"
         viewController.password = "Test password"
+    }
+    
+    func testPerformAuthentication() {
+        // given
         authenticationService.authenticateReturnValue = true
         
         // when
-        viewController.viewDidLoad()
+        viewController.performAuthentication()
         
         // then
-        XCTAssert(authenticationService.authenticateCalled)
-        XCTAssert(authenticationService.authenticateReceivedArguments?.login == viewController.login)
-        XCTAssert(authenticationService.authenticateReceivedArguments?.password == viewController.password)
+        XCTAssert(authenticationService.authenticateReceivedArguments?.login == viewController.login, "Логин не был передан в функцию аутентификации")
+        XCTAssert(authenticationService.authenticateReceivedArguments?.password == viewController.password, "Пароль не был передан в функцию аутентификации")
+        XCTAssert(authenticationService.authenticateCalled, "Не произошёл вызова функции аутентификации")
+    }
+    
+    func testPerformAsyncAuthentication() {
+        // given
+        var isAuthenticated = false
+        viewController.aunthenticationHandler = { isAuthenticated = $0 }
+        
+        // when
+        viewController.performAsyncAuthentication()
+        authenticationService.asyncAuthenticateReceivedArguments?.authenticationHandler(true)
+        
+        // then
+        XCTAssert(authenticationService.asyncAuthenticateCalled, "Не произошёл вызов асинхронной функции аутентификации")
+        XCTAssert(authenticationService.asyncAuthenticateReceivedArguments?.login == viewController.login, "Логин не был передан в асинхронную функцию аутентификации")
+        XCTAssert(authenticationService.asyncAuthenticateReceivedArguments?.password == viewController.password, "Пароль не был передан в асинхронную функцию аутентификации")
+        XCTAssert(isAuthenticated, "Контроллер не обрабтывает результат аутентификации")
     }
     
 }

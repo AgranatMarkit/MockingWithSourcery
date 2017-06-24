@@ -7,7 +7,16 @@
 //
 
 class AuthenticationServiceImplementation: AuthenticationService {
-    func authenticate(with login: String, and password: String) -> Bool {
+    
+    func authenticate(with login: AuthenticationService.Login,
+                      and password: AuthenticationService.Password) -> AuthenticationService.isSucces {
         return true
     }
+    
+    func asyncAuthenticate(with login: AuthenticationService.Login,
+                           and password: AuthenticationService.Password,
+                           and authenticationHandler: @escaping (AuthenticationService.isSucces) -> Void) {
+        authenticationHandler(true)
+    }
+    
 }
